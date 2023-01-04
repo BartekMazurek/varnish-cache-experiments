@@ -1,0 +1,48 @@
+version: '3'
+
+volumes:
+    db:
+
+services:
+
+    varnish:
+        container_name: v_varnish
+        build:
+            context: .
+            dockerfile: ./docker/varnish/Dockerfile
+        volumes:
+            - ./docker/varnish/default.vcl:/etc/varnish/default.vcl
+        tmpfs:
+            - /var/lib/varnish:exec
+        ports:
+            - '80:80'
+        networks:
+            - test
+
+    nginx:
+        container_name: v_nginx
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
+        ports:
+            - '8080:80'
+        volumes:
+            - .:/var/www/app
+        networks:
+            - test
+
+    php:
+        container_name: v_php
+        build:
+            context: .
+            dockerfile: ./docker/php/Dockerfile
+        volumes:
+            - .:/var/www/app
+        env_file:
+            -   .env
+        networks:
+            - test
+
+networks:
+    test:
+        driver: bridge
