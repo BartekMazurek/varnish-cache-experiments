@@ -1,5 +1,7 @@
 ## Varnish HTTP cache experiments
 
+![Varnish Cache image](https://bartekblog.prv.pl/varnish_proxy/varnish_architecture.png)
+
 #### 1 - How to set up
 > docker-compose up
 
