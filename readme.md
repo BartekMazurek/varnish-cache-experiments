@@ -1,5 +1,7 @@
 ## Varnish HTTP cache experiments
 
+#### Simple example of HTTP data cache fetched from external API. Cached by Varnish & based on Nginx
+
 ![Varnish Cache image](https://bartekblog.prv.pl/varnish_proxy/varnish_architecture.png)
 
 #### 1 - How to set up
